@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var users = [
+        { name: "Michael", age: 37 },
+        { name: "John", age: 30 },
+        { name: "David", age: 27 },
+      ];
+      console.log("edad de John");
+      console.log(users[1].age);
+      console.log("nombre del primer objeto");
+      console.log("Nombre: " + users[0].name);
+      console.log("nombre y la edad de cada usuario");
+      for (var i = 0; i < users.length; i++) {
+        console.log(users[i].name + " - " + users[i].age);
+      }
+      console.log("nombre de los mayores de edad");
+      for (var i = 0; i < users.length; i++) {
+        if (users[i].age >= 30) console.log(users[i].name);
+      }
+    </script>
+  </body>
+</html>
