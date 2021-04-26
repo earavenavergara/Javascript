@@ -20,6 +20,10 @@ div.coin {
   background-repeat: no-repeat;
   background-position: center;
 }
+div.cherry {
+  background: url("cherry.png");
+  background-size: 20px;
+}
 div.empty {
   background-color: black;
 }
@@ -44,5 +48,5 @@ div#score {
   height: 25px;
   position: absolute;
   top: 10px;
-  left: 210px;
+  left: 450px;
 }
