@@ -84,44 +84,6 @@ function movGhost() {
 displayWorld();
 displayPacman();
 displayScore();
-
-/* document.onkeydown = function (e) {
-  if (e.keyCode == 39 && world[pacman.y][pacman.x + 1] != 2) {
-    //mov derecha
-    document.getElementById("pacman").style.backgroundImage =
-      "url('mov-pacman/right-pacman.gif')";
-    pacman.x++;
-  } else if (e.keyCode == 37 && world[pacman.y][pacman.x - 1] != 2) {
-    //mov isquierda
-    document.getElementById("pacman").style.backgroundImage =
-      "url('mov-pacman/left-pacman.gif')";
-    pacman.x--;
-  } else if (e.keyCode == 38 && world[pacman.y - 1][pacman.x] != 2) {
-    //mov arriba
-    document.getElementById("pacman").style.backgroundImage =
-      "url('mov-pacman/up-pacman.gif')";
-    pacman.y--;
-  } else if (e.keyCode == 40 && world[pacman.y + 1][pacman.x] != 2) {
-    //mov abajo
-    document.getElementById("pacman").style.backgroundImage =
-      "url('mov-pacman/down-pacman.gif')";
-    pacman.y++;
-  }
-  if (world[pacman.y][pacman.x] == 1) {
-    world[pacman.y][pacman.x] = 0;
-    score += 10;
-  } else if (world[pacman.y][pacman.x] == 3) {
-    world[pacman.y][pacman.x] = 0;
-    score += 50;
-  } else if (world[pacman.y][pacman.x] == 4) {
-    life -= 1;
-  }
-  //console.log(e.keyCode);
-  movGhost();
-  displayWorld();
-  displayScore();
-  displayPacman();
-}; */
 window.addEventListener(
   "keydown",
   function (event) {
