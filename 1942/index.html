@@ -26,12 +26,13 @@
       }
       .enemy1 {
         background: url("1942.gif");
-        background-position: -32px -1px;
+        background-position: -33px -4px;
+        /* background-position: 123px -37px; */
         width: 25px;
         height: 25px;
         position: absolute;
         transform: rotate(180deg);
-        /* border: 1px solid white; */
+        border: 1px solid white;
       }
       .enemy2 {
         background: url("1942.gif");
@@ -67,9 +68,9 @@
       <!-- <div class="enemy2" style="top: 200px; left: 250px"></div> -->
       <div id="bullets"></div>
     </div>
-    <div id="score">100</div>
+    <div id="score"></div>
     <script>
-      var score = 100;
+      var score = 0;
       var hero = {
         x: 250,
         y: 550,
@@ -78,7 +79,7 @@
         { x: 50, y: 50 },
         { x: 150, y: 100 },
         { x: 250, y: 50 },
-        { x: 210, y: 180 },
+        { x: 250, y: 500 },
         { x: 300, y: 250 },
         { x: 350, y: 100 },
         { x: 450, y: 50 },
@@ -99,14 +100,13 @@
             'px"></div>';
         }
         document.getElementById("enemies").innerHTML = output;
-        //console.log(output);
       }
       function moveEnemies() {
         for (var i = 0; i < enemies.length; i++) {
           enemies[i].y += 5;
           if (enemies[i].y > 590) {
-            enemies[i].y = 0;
-            enemies[i].x = Math.random() * 400;
+            enemies[i].y = 10;
+            enemies[i].x = Math.random() * 480 + 10;
           }
         }
       }
@@ -121,7 +121,6 @@
             'px"></div>';
         }
         document.getElementById("bullets").innerHTML = output;
-        //console.log(output);
       }
       function moveBullets() {
         for (var i = 0; i < bullets.length; i++) {
@@ -136,11 +135,25 @@
         for (var i = 0; i < bullets.length; i++) {
           for (var j = 0; j < enemies.length; j++) {
             if (
-              Math.abs(bullets[i].x - enemies[i].x) < 10 &&
-              Math.abs(bullets[i].y - enemies[i].y) < 10
+              Math.abs(bullets[i].x - enemies[j].x) < 25 &&
+              Math.abs(bullets[i].y - enemies[j].y) < 20
             ) {
-              console.log("bullet", i, "and enemy", j, "colision");
+              enemies[j].y = 10;
+              enemies[j].x = Math.random() * 480 + 10;
+              score += 10;
+              //console.log("bullet", i, "and enemy", j, "colision");
             }
+          }
+        }
+        for (var k = 0; k < enemies.length; k++) {
+          if (
+            Math.abs(hero.x - enemies[k].x) < 25 &&
+            Math.abs(hero.y - enemies[k].y) < 20
+          ) {
+            enemies[k].y = 10;
+            enemies[k].x = Math.random() * 480 + 10;
+            score -= 500;
+            //console.log("colision");
           }
         }
       }
@@ -160,7 +173,6 @@
       window.addEventListener(
         "keydown",
         function (event) {
-          //console.log(event.code);
           if (event.code == "ArrowLeft" && hero.x > 10) hero.x -= 5;
           else if (event.code == "ArrowRight" && hero.x < 490) hero.x += 5;
           else if (event.code == "ArrowUp" && hero.y > 10) hero.y -= 5;
@@ -169,6 +181,7 @@
             bullets.push({ x: hero.x + 5, y: hero.y - 15 });
             displayBullets();
           }
+          //gameLoop();
         },
         true
       );
